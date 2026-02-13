@@ -87,34 +87,6 @@
             }
             }
 
-            #mouth{
-                z-index: 100;
-                position: absolute;
-                width: 14%;
-                top: 38%;
-                left: 67%;
-                animation: orbit 2s backwards infinite;
-                animation-timing-function: linear;
-            }
-
-            #cake{
-                z-index: 100;
-                position: absolute;
-                width: 8%;
-                top: 6%;
-                left: 69%;
-                animation: orbit 3s backwards infinite;
-                animation-timing-function: linear;
-            }
-
-            #fruits{
-                z-index: 99;
-                position: absolute;
-                width: 16%;
-                top: 42%;
-                left: 61%;
-            }
-
             #navig {
                 z-index: 99;
                 position: absolute;
@@ -124,15 +96,6 @@
                 pointer-events: none;
             }
 
-            #pengu {
-                z-index: 100;
-                position: absolute;
-                width: 14%;
-                top: 77%;
-                left: 66%;
-                animation: orbit 4s backwards infinite;
-                animation-timing-function: linear;
-            }
 
             #webart {
                 z-index: 100;
@@ -196,7 +159,68 @@
                 top: 17%;
                 left:54%;
             }
+            * {box-sizing: border-box}
+                body {font-family: Arial, Helvetica, sans-serif; margin:0}
+                .mySlides {display: none}
+                img {vertical-align: middle;}
 
+            .slideshow-container {
+                max-width: 1000px;
+                position: absolute;
+                top:45%;
+                left:15%;
+                margin: auto;
+                }
+
+                /* Next & previous buttons */
+                .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                padding: 16px;
+                margin-top: -22px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s ease;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+                }
+
+                /* Position the "next button" to the right */
+                .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+                }
+
+                /* On hover, add a black background color with a little bit see-through */
+                .prev:hover, .next:hover {
+                background-color: rgba(255, 99, 255, 0.5);
+                }
+
+                /* Caption text */
+                .text {
+                color: #f2f2f2;
+                font-size: 15px;
+                padding: 8px 12px;
+                position: absolute;
+                bottom: 8px;
+                width: 100%;
+                text-align: center;
+                }
+                /* Number text (1/3 etc) */
+                .numbertext {
+                color: #f2f2f2;
+                font-size: 12px;
+                padding: 8px 12px;
+                position: absolute;
+                top: 0;
+                }
+
+                .active, .dot:hover {
+                background-color: #717171;
+                }
         </style>
     </head>
     <body>
@@ -215,6 +239,78 @@
             </h1>-->
         </div>
         <div id="plastics"></div> 
-        <div id="fruit"></div>        
-    </body>
+        <div id="fruit"></div>
+              <div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="dec_slide1.png" style="width:100%">
+  <div class="text"><i>Declutters</i> (2025) 4-color risograph</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="dec_slide2.png" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="dec_slide3.png" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="dec_slide4.png" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 5</div>
+  <img src="dec_slide5.png" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script> 
+</body>
 </html>
