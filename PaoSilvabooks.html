@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html{
+                height: 100%;
+                background-color: #0ff;
+                overflow-y: hidden;
+                overflow-x: hidden;
+            }
+            .bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: -1;
+                pointer-events: none;
+                animation-name: fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            .stretch {
+             width: 100%;
+            height: 100%;
+            }
+            
+            h1 {
+                font-size: large;
+                position: absolute;
+                pointer-events: none;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#fff;
+                z-index:100;
+                
+            }
+
+            #bio {
+                left: 4%;
+                top: 75%;
+                animation-name: slide, fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            img:hover {
+                opacity: 50%;
+            }
+            
+            @keyframes slide {
+                from {
+                    left: 0%;
+                }
+
+                to {
+                    left: 4%;
+                }
+            }
+            
+            @keyframes orbit {
+                from {  -webkit-transform: rotate(0deg) translateX(20px) rotate(0deg); }
+                to   {  -webkit-transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+            }
+
+            @keyframes fade {
+                from {
+                    opacity: 0%;
+                }
+
+                to {
+                    opacity: 100%;
+                }
+            }
+
+            .glow {
+                animation: glow 1s ease-in-out infinite alternate;
+            }
+
+            @keyframes glow {
+              from {
+             text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+  
+            to {
+             text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+            }
+
+            #mouth{
+                z-index: 100;
+                position: absolute;
+                width: 14%;
+                top: 38%;
+                left: 67%;
+                animation: orbit 2s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #cake{
+                z-index: 100;
+                position: absolute;
+                width: 8%;
+                top: 6%;
+                left: 69%;
+                animation: orbit 3s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #fruits{
+                z-index: 99;
+                position: absolute;
+                width: 16%;
+                top: 42%;
+                left: 61%;
+            }
+
+            #navig {
+                z-index: 99;
+                position: absolute;
+                width: 16%;
+                top: 9%;
+                left: 45%;
+                pointer-events: none;
+            }
+
+            #pengu {
+                z-index: 100;
+                position: absolute;
+                width: 14%;
+                top: 77%;
+                left: 66%;
+                animation: orbit 4s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #webart {
+                z-index: 100;
+                width: 100%;
+                position: absolute;
+                top: 19%;
+                left: 51%;
+            }
+
+            #books {
+                z-index: 100;
+                width: 100%;
+                position: absolute;
+                top: 48%;
+                left: 49%;
+            }
+
+            #about {
+                z-index: 100;
+                width: 100%;
+                position: absolute;
+                top: 76%;
+                left: 54%;
+            }
+
+            #declutters {
+                position: absolute;
+                
+                opacity: 50%;
+                width:17%;
+                height: 25%;
+                top: 17%;
+                left:15%;
+            }
+
+            #decText {
+                position: absolute;
+               
+                width:17%;
+                height: 30%;
+                top: 50%;
+                left:15%;
+            }
+
+            #plastics {
+                position: absolute;
+                
+                opacity: 50%;
+                width:17%;
+                height: 25%;
+                top: 17%;
+                left:34%;
+            }
+           
+            #fruit {
+                position: absolute;
+                
+                opacity: 50%;
+                width:17%;
+                height: 25%;
+                top: 17%;
+                left:54%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img src="booksBACKGROUND.png" class="bg">
+        <img src="booksOPTIONS.png" class="bg">
+        <div id="declutters"></div>
+        <div id="decText">
+           <!-- <h1>
+                <i>declutters</i>
+                (2025) 5 x 3"
+                <br>
+                4 color risograph
+                <br>
+                A book collecting screenshots I hoarded to make into artwork, but didn't. Once I printed and bound this book, I deleted the image forever.
+                The theme of this initial volume is toys and plastics.
+            </h1>-->
+        </div>
+        <div id="plastics"></div> 
+        <div id="fruit"></div>        
+    </body>
+</html>
