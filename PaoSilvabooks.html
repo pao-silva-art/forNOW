@@ -43,10 +43,6 @@
                 animation-duration: 2s;
                 animation-iteration-count: 1;
             }
-
-            img:hover {
-                opacity: 50%;
-            }
             
             @keyframes slide {
                 from {
@@ -123,7 +119,7 @@
 
             #declutters {
                 position: absolute;
-                
+                cursor: pointer;
                 opacity: 50%;
                 width:17%;
                 height: 25%;
@@ -133,7 +129,7 @@
 
             #decText {
                 position: absolute;
-               
+               cursor: pointer;
                 width:17%;
                 height: 30%;
                 top: 50%;
@@ -142,7 +138,7 @@
 
             #plastics {
                 position: absolute;
-                
+                cursor: pointer;
                 opacity: 50%;
                 width:17%;
                 height: 25%;
@@ -152,7 +148,7 @@
            
             #fruit {
                 position: absolute;
-                
+                cursor: pointer;
                 opacity: 50%;
                 width:17%;
                 height: 25%;
@@ -165,6 +161,7 @@
                 img {vertical-align: middle;}
 
             .slideshow-container {
+                display: none;
                 max-width: 1000px;
                 position: absolute;
                 top:45%;
@@ -221,6 +218,28 @@
                 .active, .dot:hover {
                 background-color: #717171;
                 }
+                .slideshow-container {
+                    display: none;
+                    opacity: 0;
+                    transition: opacity 0.6s ease;
+                }
+
+                .slideshow-container.show {
+                    display: block;
+                    opacity: 1;
+                }
+
+                .mySlides {
+                    display: none;
+                    opacity: 0;
+                    transition: opacity 0.6s ease;
+                }
+
+                .mySlides.activeSlide {
+                    display: block;
+                    opacity: 1;
+                }
+
         </style>
     </head>
     <body>
@@ -240,43 +259,13 @@
         </div>
         <div id="plastics"></div> 
         <div id="fruit"></div>
-              <div class="slideshow-container">
 
-<div class="mySlides fade">
-  <div class="numbertext">1 / 5</div>
-  <img src="dec_slide1.png" style="width:100%">
-  <div class="text"><i>Declutters</i> (2025) 4-color risograph</div>
-</div>
 
-<div class="mySlides fade">
-  <div class="numbertext">2 / 5</div>
-  <img src="dec_slide2.png" style="width:100%">
-  <div class="text">Caption Two</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">3 / 5</div>
-  <img src="dec_slide3.png" style="width:100%">
-  <div class="text">Caption Three</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">4 / 5</div>
-  <img src="dec_slide4.png" style="width:100%">
-  <div class="text">Caption Three</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">5 / 5</div>
-  <img src="dec_slide5.png" style="width:100%">
-  <div class="text">Caption Three</div>
-</div>
-
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
-
-</div>
-<br>
+        <div class="slideshow-container" id="slideshow">
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+        <br>
 
 <div style="text-align:center">
   <span class="dot" onclick="currentSlide(1)"></span> 
@@ -286,31 +275,77 @@
 
 <script>
 let slideIndex = 1;
-showSlides(slideIndex);
+let currentCategory = "";
+const slideshow = document.getElementById("slideshow");
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+document.getElementById("declutters").onclick = function() {
+    changeCategory("dec_slide", 5);
+};
+
+document.getElementById("plastics").onclick = function() {
+    changeCategory("plastics_slide", 5);
+};
+
+document.getElementById("fruit").onclick = function() {
+    changeCategory("fruit_slide", 3);
+};
+
+function changeCategory(prefix, count) {
+
+    // If clicking same category, do nothing
+    if (currentCategory === prefix) return;
+
+    currentCategory = prefix;
+
+    // Fade out first
+    slideshow.classList.remove("show");
+
+    setTimeout(() => {
+
+        // Remove old slides
+        document.querySelectorAll(".mySlides").forEach(slide => slide.remove());
+
+        // Create new slides
+        for (let i = 1; i <= count; i++) {
+            const slide = document.createElement("div");
+            slide.className = "mySlides";
+
+            slide.innerHTML = `
+                <div class="numbertext">${i} / ${count}</div>
+                <img src="${prefix}${i}.png" style="width:100%">
+            `;
+
+            slideshow.insertBefore(slide, slideshow.querySelector(".prev"));
+        }
+
+        slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Fade back in
+        slideshow.classList.add("show");
+
+    }, 400);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function plusSlides(n) {
+    showSlides(slideIndex += n);
 }
 
 function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+    let slides = document.getElementsByClassName("mySlides");
+
+    if (slides.length === 0) return;
+
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("activeSlide");
+    }
+
+    slides[slideIndex - 1].classList.add("activeSlide");
 }
-</script> 
+</script>
+ 
 </body>
 </html>
