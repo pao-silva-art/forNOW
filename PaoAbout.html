@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html{
+                height: 100%;
+                background-color: #0ff;
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+            .bg {
+                width: 100%;
+                height: auto;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: -1;
+                pointer-events: none;
+                animation-name: fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            .stretch {
+             width: 100%;
+            height: 100%;
+            }
+            
+            h1 {
+                font-size: xx-large;
+                position: absolute;
+                pointer-events: none;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#fff;
+                z-index:100;
+                text-shadow: rgba(255,18,192,0.9) 0px 0px 39px;
+                
+            }
+
+            h2 {
+                font-size: large;
+                position: absolute;
+                pointer-events: none;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#fff;
+                z-index:100;
+                text-shadow: rgba(255,18,192,0.9) 0px 0px 39px;
+                
+            }
+
+
+            #bio {
+                left: 4%;
+                top: 75%;
+                animation-name: slide, fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            img:hover {
+                opacity: 50%;
+            }
+            
+            @keyframes slide {
+                from {
+                    left: 0%;
+                }
+
+                to {
+                    left: 4%;
+                }
+            }
+            
+            @keyframes orbit {
+                from {  -webkit-transform: rotate(0deg) translateX(20px) rotate(0deg); }
+                to   {  -webkit-transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+            }
+
+            @keyframes fade {
+                from {
+                    opacity: 0%;
+                }
+
+                to {
+                    opacity: 100%;
+                }
+            }
+
+
+            #mouth{
+                z-index: 100;
+                position: absolute;
+                width: 14%;
+                top: 38%;
+                left: 67%;
+                animation: orbit 2s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #cake{
+                z-index: 100;
+                position: absolute;
+                width: 8%;
+                top: 6%;
+                left: 69%;
+                animation: orbit 3s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #fruits{
+                z-index: 99;
+                position: absolute;
+                width: 16%;
+                top: 42%;
+                left: 61%;
+            }
+
+            #navig {
+                z-index: 99;
+                position: absolute;
+                width: 16%;
+                top: 9%;
+                left: 45%;
+                pointer-events: none;
+            }
+
+            #pengu {
+                z-index: 100;
+                position: absolute;
+                width: 14%;
+                top: 77%;
+                left: 66%;
+                animation: orbit 4s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #webart {
+                z-index: 100;
+                width: 100%;
+                position: absolute;
+                top: 19%;
+                left: 51%;
+            }
+
+            #books {
+                z-index: 100;
+                width: 100%;
+                position: absolute;
+                top: 48%;
+                left: 49%;
+            }
+
+            #about {
+                z-index: 100;
+                width: 100%;
+                position: absolute;
+                top: 76%;
+                left: 54%;
+            }
+
+            #sleeping {
+                position: absolute;
+                
+                opacity: 50%;
+                width:17%;
+                height: 25%;
+                top: 17%;
+                left:15%;
+            }
+
+            #cryonics {
+                position: absolute;
+                
+                opacity: 50%;
+                width:17%;
+                height: 25%;
+                top: 17%;
+                left:34%;
+            }
+           
+            #fruit {
+                position: absolute;
+                background-color: green;
+                opacity: 50%;
+                width:17%;
+                height: 25%;
+                top: 17%;
+                left:54%;
+            }
+            on:hover {
+                cursor: pointer;
+            }
+
+            #statement {
+                position: absolute;
+                left: 4%;
+                width: 50%;
+                top: 45%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="miniCV">
+            <h2>Paola Silva Lizarraga has made work for Wainstop Enterprises, has received microgrants from YoungArts Foundation, and Rhizome, is a Tufts Summer Scholar, and is pursuing a BFA in Studio Art at the School of the Museum of Fine Arts.</h2>
+        </div>
+        <div id="statement"><h1>
+            For most of my life, I lived in Tijuana, Mexico, at the border with the United States. There was the possibility we would move to America, and it seemed to get closer every year. Crossing the border to San Diego every weekend, the United States became synonymous with toy aisles, DVD bins, and Payless shoes: to go to America was to go to the mall.To shop like an American was important to me. I wanted to be American so bad. As much as the shopping mall was its own world, the world wide web was another, and through them my hope was to de-Mexicanize.
+            <br>
+You must understand that the internet felt like a real place. Because it was: it was my tool for globalization.The internet was a promise: that we could become American, that we could be full resolution. When my family finally moved to Santa Ana, California, my dream revealed to be phony. Not only was I not American, I never would be. My wish is to let you into the world of two Paos, cross-eyed: the past Pao venerating plastic, and cuteness, the cynical Pao whispering that it's all hideous. Somewhere in between there is a truth I still can't write down. And it's all a little pixelated.
+</div>
+        </h1> 
+        <img src="aboutBACKGROUND.png" class="bg">     
+    </body>
+</html>
