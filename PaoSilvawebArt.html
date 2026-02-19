@@ -8,6 +8,28 @@
                 overflow-y: hidden;
                 overflow-x: hidden;
             }
+
+            h1 {
+                font-size: large;
+                position: absolute;
+                pointer-events: none;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#fff;
+                z-index:100;
+                
+            }
+
+            h2 {
+                font-size: 1.2vw;
+                position: absolute;
+                pointer-events: none;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#fff;
+                z-index:100;
+                text-shadow: rgba(255,18,192,0.9) 0px 0px 39px;
+                
+            }
+
             .bg {
                 width: 100%;
                 height: 100%;
@@ -51,11 +73,11 @@
             
             @keyframes slide {
                 from {
-                    left: 0%;
+                    transform: translate(-50%);
                 }
 
                 to {
-                    left: 4%;
+                    transform: translate(0%);
                 }
             }
             
@@ -88,95 +110,76 @@
             }
             }
 
-            #mouth{
-                z-index: 100;
-                position: absolute;
-                width: 14%;
-                top: 38%;
-                left: 67%;
-                animation: orbit 2s backwards infinite;
-                animation-timing-function: linear;
-            }
-
-            #cake{
-                z-index: 100;
-                position: absolute;
-                width: 8%;
-                top: 6%;
-                left: 69%;
-                animation: orbit 3s backwards infinite;
-                animation-timing-function: linear;
-            }
-
-            #fruits{
-                z-index: 99;
-                position: absolute;
-                width: 16%;
-                top: 42%;
-                left: 61%;
-            }
-
-            #navig {
-                z-index: 99;
-                position: absolute;
-                width: 16%;
-                top: 9%;
-                left: 45%;
-                pointer-events: none;
-            }
-
-            #pengu {
-                z-index: 100;
-                position: absolute;
-                width: 14%;
-                top: 77%;
-                left: 66%;
-                animation: orbit 4s backwards infinite;
-                animation-timing-function: linear;
-            }
-
-            #webart {
-                z-index: 100;
-                width: 100%;
-                position: absolute;
-                top: 19%;
-                left: 51%;
-            }
-
-            #books {
-                z-index: 100;
-                width: 100%;
-                position: absolute;
-                top: 48%;
-                left: 49%;
-            }
-
+            #contact,
+            #instagram,
+            #home,
+            #books,
             #about {
+                position: absolute;
+                width: 7%;
+                aspect-ratio: 1 / 1;
                 z-index: 100;
+                animation-name: slide, fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            #contact  { top: 88%; left: 4%;}
+            #instagram  { top: 88%; left: 12%;} 
+            #about  { top: 88%; left: 20%;}
+            #books  { top: 88%; left: 28%;}
+            #home  { top: 88%; left: 36%;} 
+
+            #contact img,
+            #instagram img,
+            #about img,
+            #books img,
+            #home img {
+                position: absolute;
                 width: 100%;
-                position: absolute;
-                top: 76%;
-                left: 54%;
+                height: 100%;
+                object-fit: contain;
             }
 
-            #sleeping {
-                position: absolute;
-                
+            #contact:hover,
+            #instagram:hover,
+            #home:hover,
+            #books:hover,
+            #about:hover {
                 opacity: 50%;
-                width:17%;
-                height: 25%;
-                top: 17%;
-                left:15%;
             }
 
-            #cryonics {
+            #instagram h2,
+               #contact h2,
+               #about h2,
+               #books h2,
+               #home h2 {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin: 0;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 1vw;
+                    pointer-events: none;
+                }
+
+
+            #sleepingB {
                 position: absolute;
-                
-                opacity: 50%;
-                width:17%;
-                height: 25%;
-                top: 17%;
-                left:34%;
+                width:auto;
+                height: 50%;
+                top: 0%;
+                left:0%;
+            }
+
+            #cryonicsI {
+                position: absolute;
+                width:auto;
+                height: 50%;
+                top: 0%;
+                left:33%;
             }
            
             #fruit {
@@ -196,12 +199,42 @@
     </head>
     <body>
         <img src="booksBACKGROUND.png" class="bg">
-        <img src="webartOPTIONS.png" class="bg">
+        
         <a href="https://pao-silva-art.github.io/eggMethods/">
-            <div id="sleeping"></div>
+            <img src="sleepingB.png" id="sleepingB">
         </a>
         <a href="https://pao-silva-art.github.io/cryonics.io/">
-            <div id="cryonics"></div>
-        </a>       
+            <img src="cryonics.png" id="cryonicsI">
+        </a>
+        <a href= "mailto:pao.silva.art@gmail.com">
+        <div id="contact" class="glow">
+            <h2>contact</h2>
+            <img src="buttonGEN.png">
+        </div>
+        </a>
+    <a href="https://www.instagram.com/pao.la.silva/?next=">
+        <div id="instagram" class="glow">
+            <h2>instagram</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
+    <a href="index.html">
+        <div id="home" class="glow">
+            <h2>home</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
+    <a href="PaoSilvabooks.html">
+        <div id="books" class="glow">
+            <h2>books</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
+    <a href="PaoAbout.html">
+        <div id="about" class="glow">
+            <h2>about</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>       
     </body>
 </html>
