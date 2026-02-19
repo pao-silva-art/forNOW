@@ -36,6 +36,14 @@
                 
             }
 
+            h2 {
+                font-size: 1.2vw;
+                font-family: Arial, Helvetica, sans-serif;
+                color:#fff;
+                z-index:100;
+            }
+
+
             #bio {
                 left: 4%;
                 top: 75%;
@@ -44,13 +52,54 @@
                 animation-iteration-count: 1;
             }
             
+                        /* Hide miniBIO by default */
+                    #miniBIO {
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+            }
+
+            #miniBIO.visible {
+                opacity: 1;
+            }
+
+
+            /* Keep visible when clicked */
+            #miniBIO.active {
+                opacity: 1;
+            }
+
+            /* Scrolling animation */
+            .scrolling-text {
+                display: inline-block;
+                padding-left: 100%;
+                animation: scrollBanner 18s linear infinite;
+            }
+
+            @keyframes scrollBanner {
+                from {
+                    transform: translateX(0%);
+                }
+                to {
+                    transform: translateX(-100%);
+                }
+            }
+
+
             @keyframes slide {
                 from {
-                    left: 0%;
+                    transform: translate(-50%);
                 }
 
                 to {
-                    left: 4%;
+                    transform: translate(0%);
                 }
             }
             
@@ -92,29 +141,12 @@
                 pointer-events: none;
             }
 
-
-            #webart {
-                z-index: 100;
-                width: 100%;
-                position: absolute;
-                top: 19%;
-                left: 51%;
-            }
-
             #books {
                 z-index: 100;
                 width: 100%;
                 position: absolute;
                 top: 48%;
                 left: 49%;
-            }
-
-            #about {
-                z-index: 100;
-                width: 100%;
-                position: absolute;
-                top: 76%;
-                left: 54%;
             }
 
             #declutters {
@@ -126,6 +158,8 @@
                 top: 17%;
                 left:15%;
             }
+
+            
 
             #decText {
                 position: absolute;
@@ -154,6 +188,7 @@
                 height: 25%;
                 top: 17%;
                 left:54%;
+                
             }
             * {box-sizing: border-box}
                 body {font-family: Arial, Helvetica, sans-serif; margin:0}
@@ -164,7 +199,7 @@
                 display: none;
                 max-width: 1000px;
                 position: absolute;
-                top:45%;
+                top:43%;
                 left:15%;
                 margin: auto;
                 }
@@ -240,11 +275,106 @@
                     opacity: 1;
                 }
 
+            #contact,
+            #instagram,
+            #home,
+            #webart,
+            #about {
+                position: absolute;
+                width: 7%;
+                aspect-ratio: 1 / 1;
+                z-index: 100;
+                animation-name: slide, fade;
+                animation-duration: 2s;
+                animation-iteration-count: 1;
+            }
+
+            #contact:hover,
+            #instagram:hover,
+            #home:hover,
+            #webart:hover,
+            #about:hover {
+                opacity: 50%;
+            }
+
+            #contact  { top: 88%; left: 4%;}
+            #instagram  { top: 88%; left: 12%;} 
+            #about  { top: 88%; left: 20%;}
+            #webart  { top: 88%; left: 28%;}
+            #home  { top: 88%; left: 36%;} 
+
+            #contact img,
+            #instagram img,
+            #about img,
+            #webart img,
+            #home img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            #instagram h2,
+               #contact h2,
+               #about h2,
+               #webart h2,
+               #home h2 {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin: 0;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 1vw;
+                    pointer-events: none;
+                }
+
         </style>
     </head>
     <body>
+        <div id="miniBIO">
+            <div class="scrolling-text">
+                <h2 id="miniText">
+                    <i><b>Declutters I</b></i> (2025) is a 4-color risograph hardcover book collecting screenshots I hoarded to make into artwork, but didn't.
+                    Once I printed and bound this book, I deleted the image forever.
+                    The theme of this initial volume is toys and plastics.
+                </h2>
+            </div>
+        </div>
+
         <img src="booksBACKGROUND.png" class="bg">
         <img src="booksOPTIONS.png" class="bg">
+        <a href= "mailto:pao.silva.art@gmail.com">
+        <div id="contact" class="glow">
+            <h2>contact</h2>
+            <img src="buttonGEN.png">
+        </div>
+        </a>
+    <a href="https://www.instagram.com/pao.la.silva/?next=">
+        <div id="instagram" class="glow">
+            <h2>instagram</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
+    <a href="index.html">
+        <div id="home" class="glow">
+            <h2>home</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
+    <a href="PaoSilvawebArt.html">
+        <div id="webart" class="glow">
+            <h2>web art</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
+    <a href="PaoAbout.html">
+        <div id="about" class="glow">
+            <h2>about</h2>
+             <img src="buttonGEN.png">
+        </div>
+    </a>
         <div id="declutters"></div>
         <div id="decText">
            <!-- <h1>
@@ -345,6 +475,66 @@ function showSlides(n) {
 
     slides[slideIndex - 1].classList.add("activeSlide");
 }
+
+const miniBIO = document.getElementById("miniBIO");
+const miniText = document.getElementById("miniText");
+
+const declutters = document.getElementById("declutters");
+const plastics = document.getElementById("plastics");
+const fruit = document.getElementById("fruit");
+
+let activeCategory = null;
+
+// Text definitions
+const texts = {
+    declutters: `
+        <i>declutters I</i> (2025) 3 x 5 in, coptic stitch, is a 4-color risograph hardcover book collecting screenshots I hoarded to make into artwork, but didn't.
+        Once I printed and bound this book, I deleted the image forever.
+        The theme of this initial volume is toys and plastics.
+    `,
+    plastics: "<i>a study of plastics</i> (2025) 8 x 10 in, is a 4-color risograph, perfect bound book exploring the aesthetics of shopping malls, toys, and advertisements. This is a prototype and a collection of my digital drawings.",
+    fruit: "<i>Do you believe in fruit?</i> (2025), 11 x 17 in, 4-color risograph flyer."
+};
+
+// Function to show text
+function showText(category) {
+    miniText.innerHTML = texts[category];
+    miniBIO.classList.add("visible");
+}
+
+// Function to restore clicked text
+function restoreActive() {
+    if (activeCategory) {
+        showText(activeCategory);
+    } else {
+        miniBIO.classList.remove("visible");
+    }
+}
+
+// ---- DECLUTTERS ----
+declutters.addEventListener("mouseenter", () => showText("declutters"));
+declutters.addEventListener("mouseleave", restoreActive);
+declutters.addEventListener("click", () => {
+    activeCategory = "declutters";
+    showText("declutters");
+});
+
+// ---- PLASTICS ----
+plastics.addEventListener("mouseenter", () => showText("plastics"));
+plastics.addEventListener("mouseleave", restoreActive);
+plastics.addEventListener("click", () => {
+    activeCategory = "plastics";
+    showText("plastics");
+});
+
+// ---- FRUIT ----
+fruit.addEventListener("mouseenter", () => showText("fruit"));
+fruit.addEventListener("mouseleave", restoreActive);
+fruit.addEventListener("click", () => {
+    activeCategory = "fruit";
+    showText("fruit");
+});
+
 </script>
  
 </body>
